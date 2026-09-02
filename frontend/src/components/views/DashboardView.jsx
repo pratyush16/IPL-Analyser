@@ -14,6 +14,17 @@ const BG_GRADIENTS = [
   "from-amber-600 to-yellow-600"
 ];
 
+const DEFAULT_LEGENDS = [
+  { name: "V Kohli", runs: 8004 },
+  { name: "S Dhawan", runs: 6769 },
+  { name: "RG Sharma", runs: 6628 },
+  { name: "DA Warner", runs: 6565 },
+  { name: "SK Raina", runs: 5528 },
+  { name: "MS Dhoni", runs: 5243 },
+  { name: "AB de Villiers", runs: 5162 },
+  { name: "CH Gayle", runs: 4965 }
+];
+
 export default function DashboardView({
   seasonsList = [],
   playersList = [],
@@ -21,10 +32,10 @@ export default function DashboardView({
   onViewAllPlayers,
   getDisplayName,
 }) {
-  const topScorer = playersList.length > 0 ? playersList[0] : null;
+  const topScorer = playersList.length > 0 ? playersList[0] : DEFAULT_LEGENDS[0];
 
   const topEightPlayers = useMemo(() => {
-    return playersList.slice(0, 8);
+    return playersList.length > 0 ? playersList.slice(0, 8) : DEFAULT_LEGENDS;
   }, [playersList]);
 
   return (
