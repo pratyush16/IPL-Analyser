@@ -9,7 +9,7 @@ import PlayerDetailView from "../components/views/PlayerDetailView";
 import TeamsView from "../components/views/TeamsView";
 import SquadModal from "../components/modals/SquadModal";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://ipl-analyser-w6ao.onrender.com/api";
 
 const DISPLAY_MAP = {
   "V Kohli": "Virat Kohli",
@@ -256,12 +256,6 @@ export default function Dashboard() {
 
         {/* Dashboard Content Body */}
         <main className="flex-1 p-6 md:p-8 space-y-8 overflow-y-auto">
-          {error && (
-            <div className="bg-red-50 border border-red-100 text-red-700 px-6 py-4 rounded-2xl text-sm font-medium">
-              {error}
-            </div>
-          )}
-
           {activeTab === "Dashboard" && (
             <DashboardView
               seasonsList={seasonsList}
