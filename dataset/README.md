@@ -1,6 +1,6 @@
-# 📊 IPL Historical Datasets (2007 – 2026)
+# 📊 IPL Historical Datasets (2008 – 2026)
 
-This directory contains 19 individual CSV files representing every IPL season from **2007-08 to 2026**.
+This directory contains 19 individual CSV files representing every IPL season from **2008 to 2026**.
 
 ## 📄 Dataset Overview
 - **File Names**: `2007-08.csv`, `2009.csv`, `2011.csv` ... `2026.csv`
