@@ -8,15 +8,25 @@ import json
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-# Target the 'dataset' directory in root
-dataset_dir = os.path.abspath(os.path.join(base_dir, '..', 'dataset'))
+candidate_paths = [
+    os.path.abspath(os.path.join(base_dir, '..', 'dataset')),
+    os.path.abspath(os.path.join(base_dir, 'dataset')),
+    os.path.abspath('dataset'),
+]
+dataset_dir = next((p for p in candidate_paths if os.path.exists(p)), candidate_paths[0])
+print(f"Using dataset directory: {dataset_dir}")
 
 processor = DataProcessor(dataset_dir)
 
-# NEW: Route to fetch list of available seasons
+@app.route('/', methods=['GET'])
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "ok", "message": "IPL Analyser Backend Service Active"})
+
+# Route to fetch list of available seasons
 @app.route('/api/seasons', methods=['GET'])
 def get_seasons():
     try:
@@ -168,5 +178,6 @@ def get_team_squad(team_code):
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    # Run on port 5000
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
+
