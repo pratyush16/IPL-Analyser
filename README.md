@@ -1,4 +1,4 @@
-# 🏏 IPL Analyser — Full-Stack Cricket Analytics App
+# 🏏 IPL Analyser — Cricket Analytics App
 
 An in-depth cricket analytics and performance dashboard built with **Next.js 16**, **React**, and a **Python / Flask** REST API, tracking ball-by-ball datasets across 19 IPL seasons (2007–2026).
 
