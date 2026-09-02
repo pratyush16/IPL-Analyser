@@ -13,4 +13,4 @@ This directory contains the Python REST API server powering the IPL Analyser app
 pip install -r requirements.txt
 python app.py
 ```
-Backend will start on `http://127.0.0.1:5000`.
+Backend runs on `http://127.0.0.1:5000`.
