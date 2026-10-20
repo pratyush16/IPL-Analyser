@@ -35,9 +35,13 @@ export default function Sidebar({ activeTab, setActiveTab }) {
         {/* Sidebar Header */}
         <div className="h-20 flex items-center px-6 border-b border-gray-50 flex-shrink-0">
           <div className="flex items-center gap-3">
-            {/* Custom Cricket Ball Icon/Logo */}
-            <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-blue-200">
-              I
+            {/* Custom Cricket Logo */}
+            <div className="h-10 w-10 rounded-full overflow-hidden shadow-md shadow-gray-200 border border-gray-100 flex-shrink-0 bg-gray-900 flex items-center justify-center">
+              <img
+                src="/logo.png"
+                alt="IPL Analyser Logo"
+                className="h-full w-full object-cover"
+              />
             </div>
             <span className={`font-bold text-xl text-gray-900 tracking-tight transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 md:hidden"}`}>
               IPL Analyzer
