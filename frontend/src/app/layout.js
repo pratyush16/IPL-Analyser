@@ -14,6 +14,14 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "IPL analyzer",
   description: "Interactive Cricket Statistics and Player Analytics Dashboard",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {

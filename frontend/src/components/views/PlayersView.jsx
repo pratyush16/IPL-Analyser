@@ -12,6 +12,25 @@ const GRADIENTS = [
   "from-violet-500 to-purple-600",
 ];
 
+const DEFAULT_PLAYERS = [
+  { name: "V Kohli", runs: 8004 },
+  { name: "S Dhawan", runs: 6769 },
+  { name: "RG Sharma", runs: 6628 },
+  { name: "DA Warner", runs: 6565 },
+  { name: "SK Raina", runs: 5528 },
+  { name: "MS Dhoni", runs: 5243 },
+  { name: "AB de Villiers", runs: 5162 },
+  { name: "CH Gayle", runs: 4965 },
+  { name: "RV Uthappa", runs: 4952 },
+  { name: "KD Karthik", runs: 4842 },
+  { name: "KL Rahul", runs: 4683 },
+  { name: "AM Rahane", runs: 4642 },
+  { name: "SV Samson", runs: 4419 },
+  { name: "F du Plessis", runs: 4571 },
+  { name: "AT Rayudu", runs: 4348 },
+  { name: "G Gambhir", runs: 4217 }
+];
+
 export default function PlayersView({
   playersList = [],
   seasonsList = [],
@@ -24,8 +43,10 @@ export default function PlayersView({
   seasonDropdownOpen,
   setSeasonDropdownOpen,
 }) {
+  const activeList = playersList.length > 0 ? playersList : DEFAULT_PLAYERS;
+
   const renderedPlayers = useMemo(() => {
-    return playersList.slice(0, 40).map((player, index) => {
+    return activeList.slice(0, 40).map((player, index) => {
       const initials = player.name.split(" ").map((n) => n[0]).join("");
       let hash = 0;
       for (let i = 0; i < player.name.length; i++) {
@@ -114,15 +135,9 @@ export default function PlayersView({
         </div>
       </div>
 
-      {playersList.length === 0 ? (
-        <div className="text-center py-20 bg-white border border-gray-100 rounded-3xl shadow-sm text-gray-450 font-bold">
-          Loading player catalog...
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {renderedPlayers}
-        </div>
-      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {renderedPlayers}
+      </div>
     </div>
   );
 }
